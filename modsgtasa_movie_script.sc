@@ -14,17 +14,17 @@ cam_loop = 0
 main_loop:
 WAIT 0
 
-IF TEST_CHEAT initvideo
+IF TEST_CHEAT modsvideo
     cam_loop = 0
 
     // VERIFICA SE O ARQUIVO DE CONFIGURAÇÃO ESTÁ CORRETO
-    IF READ_FLOAT_FROM_INI_FILE "modloader\dev_files\config.ini" "dest_coord" "x" dest_coord[0]
-    AND READ_FLOAT_FROM_INI_FILE "modloader\dev_files\config.ini" "dest_coord" "y" dest_coord[1]
-    AND READ_FLOAT_FROM_INI_FILE "modloader\dev_files\config.ini" "dest_coord" "z" dest_coord[2]
-    AND READ_FLOAT_FROM_INI_FILE "modloader\dev_files\config.ini" "object_coord" "x" object_coord[0]
-    AND READ_FLOAT_FROM_INI_FILE "modloader\dev_files\config.ini" "object_coord" "y" object_coord[1]
-    AND READ_FLOAT_FROM_INI_FILE "modloader\dev_files\config.ini" "object_coord" "z" object_coord[2]
-    AND READ_INT_FROM_INI_FILE "modloader\dev_files\config.ini" "car_model" "model" car_model
+    IF READ_FLOAT_FROM_INI_FILE "CLEO\modsgtasa_config.ini" "dest_coord" "x" dest_coord[0]
+    AND READ_FLOAT_FROM_INI_FILE "CLEO\modsgtasa_config.ini" "dest_coord" "y" dest_coord[1]
+    AND READ_FLOAT_FROM_INI_FILE "CLEO\modsgtasa_config.ini" "dest_coord" "z" dest_coord[2]
+    AND READ_FLOAT_FROM_INI_FILE "CLEO\modsgtasa_config.ini" "object_coord" "x" object_coord[0]
+    AND READ_FLOAT_FROM_INI_FILE "CLEO\modsgtasa_config.ini" "object_coord" "y" object_coord[1]
+    AND READ_FLOAT_FROM_INI_FILE "CLEO\modsgtasa_config.ini" "object_coord" "z" object_coord[2]
+    AND READ_INT_FROM_INI_FILE "CLEO\modsgtasa_config.ini" "car_model" "model" car_model
         IF IS_THIS_MODEL_A_CAR car_model
 
             // PEGA O PERSONAGEM
@@ -73,31 +73,33 @@ IF TEST_CHEAT initvideo
             cam_loop:
             WHILE cam_loop < 8
                 WAIT 0
-
-                IF cam_loop = 0
-                    ATTACH_CAMERA_TO_VEHICLE car 0.0 -6.0 1.5 0.0 0.0 0.0 0.0 2 // ATRAS
-                ENDIF
-                IF cam_loop = 1
-                    ATTACH_CAMERA_TO_VEHICLE car 4.0 -6.0 1.5 0.0 0.0 0.0 0.0 2 // ATRAS DIR
-                ENDIF
-                IF cam_loop = 2
-                    ATTACH_CAMERA_TO_VEHICLE car 6.0 0.0 1.5 0.0 0.0 0.0 0.0 2 // LATERAL DIREITA
-                ENDIF
-                IF cam_loop = 3
-                    ATTACH_CAMERA_TO_VEHICLE car 4.0 6.0 1.5 0.0 0.0 0.0 0.0 2 // FRENTE DIR
-                ENDIF
-                IF cam_loop = 4
-                    ATTACH_CAMERA_TO_VEHICLE car 0.0 6.0 1.5 0.0 0.0 0.0 0.0 2 // FRENTE
-                ENDIF
-                IF cam_loop = 5
-                    ATTACH_CAMERA_TO_VEHICLE car -4.0 6.0 1.5 0.0 0.0 0.0 0.0 2 // FRENTE ESQ
-                ENDIF
-                IF cam_loop = 6
-                    ATTACH_CAMERA_TO_VEHICLE car -6.0 0.0 1.5 0.0 0.0 0.0 0.0 2 // LATERAL ESQUERDA
-                ENDIF
-                IF cam_loop = 7
-                    ATTACH_CAMERA_TO_VEHICLE car -4.0 -6.0 1.5 0.0 0.0 0.0 0.0 2 // ATRAS ESQ
-                ENDIF
+                
+                SWITCH cam_loop
+                    CASE 0
+                        ATTACH_CAMERA_TO_VEHICLE car 0.0 -6.0 1.5 0.0 0.0 0.0 0.0 2 // ATRAS
+                    BREAK
+                    CASE 1
+                        ATTACH_CAMERA_TO_VEHICLE car 4.0 -6.0 1.5 0.0 0.0 0.0 0.0 2 // ATRAS DIR
+                    BREAK
+                    CASE 2
+                        ATTACH_CAMERA_TO_VEHICLE car 6.0 0.0 1.5 0.0 0.0 0.0 0.0 2 // LATERAL DIREITA
+                    BREAK
+                    CASE 3
+                        ATTACH_CAMERA_TO_VEHICLE car 4.0 6.0 1.5 0.0 0.0 0.0 0.0 2 // FRENTE DIR
+                    BREAK
+                    CASE 4
+                        ATTACH_CAMERA_TO_VEHICLE car 0.0 6.0 1.5 0.0 0.0 0.0 0.0 2 // FRENTE
+                    BREAK
+                    CASE 5
+                        ATTACH_CAMERA_TO_VEHICLE car -4.0 6.0 1.5 0.0 0.0 0.0 0.0 2 // FRENTE ESQ
+                    BREAK
+                    CASE 6
+                        ATTACH_CAMERA_TO_VEHICLE car -6.0 0.0 1.5 0.0 0.0 0.0 0.0 2 // LATERAL ESQUERDA
+                    BREAK
+                    CASE 7
+                        ATTACH_CAMERA_TO_VEHICLE car -4.0 -6.0 1.5 0.0 0.0 0.0 0.0 2 // ATRAS ESQ
+                    BREAK
+                ENDSWITCH
 
                 WAIT 8000
                 cam_loop += 1

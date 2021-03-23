@@ -16,17 +16,17 @@ loop = 0
 main_loop:
 WAIT 0
 
-IF TEST_CHEAT initphotos
+IF TEST_CHEAT modsphoto
     loop = 0
 
     // VERIFICA SE O ARQUIVO DE CONFIGURAÇÃO ESTÁ CORRETO
-    IF READ_FLOAT_FROM_INI_FILE "modloader\dev_files\config.ini" "camera_coord" "x" camera_coord[0]
-    AND READ_FLOAT_FROM_INI_FILE "modloader\dev_files\config.ini" "camera_coord" "y" camera_coord[1]
-    AND READ_FLOAT_FROM_INI_FILE "modloader\dev_files\config.ini" "camera_coord" "z" camera_coord[2]
-    AND READ_FLOAT_FROM_INI_FILE "modloader\dev_files\config.ini" "object_coord" "x" object_coord[0]
-    AND READ_FLOAT_FROM_INI_FILE "modloader\dev_files\config.ini" "object_coord" "y" object_coord[1]
-    AND READ_FLOAT_FROM_INI_FILE "modloader\dev_files\config.ini" "object_coord" "z" object_coord[2]
-    AND READ_INT_FROM_INI_FILE "modloader\dev_files\config.ini" "car_model" "model" car_model
+    IF READ_FLOAT_FROM_INI_FILE "CLEO\modsgtasa_config.ini" "camera_coord" "x" camera_coord[0]
+    AND READ_FLOAT_FROM_INI_FILE "CLEO\modsgtasa_config.ini" "camera_coord" "y" camera_coord[1]
+    AND READ_FLOAT_FROM_INI_FILE "CLEO\modsgtasa_config.ini" "camera_coord" "z" camera_coord[2]
+    AND READ_FLOAT_FROM_INI_FILE "CLEO\modsgtasa_config.ini" "object_coord" "x" object_coord[0]
+    AND READ_FLOAT_FROM_INI_FILE "CLEO\modsgtasa_config.ini" "object_coord" "y" object_coord[1]
+    AND READ_FLOAT_FROM_INI_FILE "CLEO\modsgtasa_configs.ini" "object_coord" "z" object_coord[2]
+    AND READ_INT_FROM_INI_FILE "CLEO\modsgtasa_config.ini" "car_model" "model" car_model
         IF IS_THIS_MODEL_A_CAR car_model
 
             PRINT_FORMATTED "MODS GTA SAN ANDREAS" 1000
