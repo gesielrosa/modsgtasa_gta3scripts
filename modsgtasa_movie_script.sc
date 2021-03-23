@@ -14,7 +14,8 @@ cam_loop = 0
 main_loop:
 WAIT 0
 
-IF TEST_CHEAT modsvideo
+IF TEST_CHEAT filme
+    PRINT_FORMATTED "MODS GTA SAN ANDREAS - MOVIE MODE" 1000
     cam_loop = 0
 
     // VERIFICA SE O ARQUIVO DE CONFIGURAÇÃO ESTÁ CORRETO

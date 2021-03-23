@@ -16,7 +16,8 @@ loop = 0
 main_loop:
 WAIT 0
 
-IF TEST_CHEAT modsphoto
+IF TEST_CHEAT foto
+    PRINT_FORMATTED "MODS GTA SAN ANDREAS - PHOTO MODE" 1000
     loop = 0
 
     // VERIFICA SE O ARQUIVO DE CONFIGURAÇÃO ESTÁ CORRETO
@@ -25,11 +26,9 @@ IF TEST_CHEAT modsphoto
     AND READ_FLOAT_FROM_INI_FILE "CLEO\modsgtasa_config.ini" "camera_coord" "z" camera_coord[2]
     AND READ_FLOAT_FROM_INI_FILE "CLEO\modsgtasa_config.ini" "object_coord" "x" object_coord[0]
     AND READ_FLOAT_FROM_INI_FILE "CLEO\modsgtasa_config.ini" "object_coord" "y" object_coord[1]
-    AND READ_FLOAT_FROM_INI_FILE "CLEO\modsgtasa_configs.ini" "object_coord" "z" object_coord[2]
+    AND READ_FLOAT_FROM_INI_FILE "CLEO\modsgtasa_config.ini" "object_coord" "z" object_coord[2]
     AND READ_INT_FROM_INI_FILE "CLEO\modsgtasa_config.ini" "car_model" "model" car_model
         IF IS_THIS_MODEL_A_CAR car_model
-
-            PRINT_FORMATTED "MODS GTA SAN ANDREAS" 1000
 
             // DEFINE A POS DO PLAYER BASEADO NA POS DA CAMERA
             player_coord[0] = camera_coord[0]
