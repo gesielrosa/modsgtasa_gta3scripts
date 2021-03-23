@@ -4,12 +4,14 @@ NOP
 LVAR_FLOAT camera_coord[3]
 LVAR_FLOAT object_coord[3]
 LVAR_FLOAT object_initial_angle
+LVAR_FLOAT player_coord[3]
 LVAR_INT car_model
 LVAR_INT car
 LVAR_INT object_ref
 LVAR_INT loop
+LVAR_INT scplayer
 
-object_initial_angle = 210.0
+object_initial_angle = 215.0
 loop = 0
 
 main_loop:
@@ -30,11 +32,28 @@ IF TEST_CHEAT modsgtasa
 
             PRINT_FORMATTED "MODS GTA SAN ANDREAS" 2000
 
+            player_coord[0] = camera_coord[0]
+            player_coord[1] = camera_coord[1]
+            player_coord[2] = camera_coord[2]
+
+            player_coord[0] += 1.0
+            player_coord[1] += 1.0
+
             // REQUEST MODEL
             REQUEST_MODEL car_model
             WHILE NOT HAS_MODEL_LOADED car_model
                 WAIT 0
             ENDWHILE
+
+            // MUDA O CLIMA PARA "ENSOLARADO"
+            FORCE_WEATHER_NOW 1
+
+            // ALTERA A HORA
+            SET_TIME_OF_DAY 12 00
+
+            // COLOCA O PLAYER PROXIMO DO LOCAL (PARA CARREGAR O AMBIENTE PROXIMO)
+            GET_PLAYER_CHAR 0 scplayer
+            SET_CHAR_COORDINATES scplayer player_coord[0] player_coord[1] player_coord[2]
 
             // POSITION CAMERA
             SET_FIXED_CAMERA_POSITION camera_coord[0] camera_coord[1] camera_coord[2] 0.0 0.0 0.0
